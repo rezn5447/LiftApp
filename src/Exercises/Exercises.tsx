@@ -3,7 +3,7 @@ import {View} from 'react-native';
 
 interface Props {}
 
-const Exercise = ({}: Props) => {
+const Exercises = ({}: Props) => {
   return (
     <View
       style={{
@@ -14,4 +14,4 @@ const Exercise = ({}: Props) => {
   );
 };
 
-export default Exercise;
+export default Exercises;
