@@ -1,14 +1,8 @@
 import React from 'react';
 import {Navigation} from 'react-native-navigation';
-import Toast from 'react-native-toast-message';
-import {ROUTES} from 'shared/constants';
-import {
-  AccountConfirm,
-  CreateAccount,
-  ForgotPassword,
-  Login,
-} from 'modules/auth/screens';
-import Profile from 'modules/profile/screens/Profile';
+import { ROUTES } from './shared/constants';
+import Home from './Home/Home';
+import Exercises from './Exercises/Exercises';
 
 export function registerScreen<P>(
   name: string,
@@ -19,7 +13,8 @@ export function registerScreen<P>(
 
 export default function registerScreens() {
   const screensMap: Array<[string, any]> = [
-    [ROUTES.APP, CreateAccount],
+    [ROUTES.HOME, Home],
+    [ROUTES.VIDEOS, Exercises],
   ];
 
   for (const [name, Component] of screensMap) {

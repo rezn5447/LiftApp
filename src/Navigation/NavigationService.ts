@@ -1,5 +1,5 @@
-import { textDark } from '../shared/colors';
-import { ROUTES } from 'shared/constants';
+import { textDark, transparent, white } from '../shared/colors';
+import { ROUTES } from '../shared/constants';
 import {
   Navigation,
   Options,
@@ -54,7 +54,7 @@ class NavigationService {
                 children: [
                   {
                     component: {
-                      name: ROUTES.ORDERS,
+                      name: ROUTES.HOME,
                       options: {
                         topBar: {
                           noBorder: true,
@@ -62,19 +62,11 @@ class NavigationService {
                           background: {
                             color: 'transparent',
                           },
-                          rightButtons: [
-                            {
-                              id: 'notification_bell',
-                              component: {
-                                name: ROUTES.NOTIFICATION_BELL,
-                                passProps: orderProps,
-                              },
-                            },
-                          ],
+                          rightButtons: [],
                         },
                         bottomTab: {
-                          icon: require('static/assets/images/menu/order.png'),
-                          selectedIcon: require('static/assets/images/menu/orderActive.png'),
+                          icon: require('src/images/dumbbell.png'),
+                          selectedIcon: require('src/images/dumbbell.png'),
                           iconInsets: BOTTOM_TAB_ICON_INSETS,
                         },
                       },
@@ -88,77 +80,14 @@ class NavigationService {
                 children: [
                   {
                     component: {
-                      name: ROUTES.SPECIALS,
+                      name: ROUTES.VIDEOS,
                       options: {
                         topBar: {
                           noBorder: true,
                         },
                         bottomTab: {
-                          icon: require('static/assets/images/menu/specials.png'),
-                          selectedIcon: require('static/assets/images/menu/specialsActive.png'),
-                          iconInsets: BOTTOM_TAB_ICON_INSETS,
-                        },
-                      },
-                    },
-                  },
-                ],
-              },
-            },
-            {
-              stack: {
-                children: [
-                  {
-                    component: {
-                      name: ROUTES.SUPPORT,
-                      options: {
-                        topBar: {
-                          noBorder: true,
-                        },
-                        bottomTab: {
-                          icon: require('static/assets/images/menu/support.png'),
-                          selectedIcon: require('static/assets/images/menu/supportActive.png'),
-                          iconInsets: BOTTOM_TAB_ICON_INSETS,
-                        },
-                      },
-                    },
-                  },
-                ],
-              },
-            },
-            {
-              stack: {
-                children: [
-                  {
-                    component: {
-                      name: ROUTES.PROFILE,
-                      options: {
-                        topBar: {
-                          noBorder: true,
-                        },
-                        bottomTab: {
-                          icon: require('static/assets/images/menu/account.png'),
-                          selectedIcon: require('static/assets/images/menu/accountActive.png'),
-                          iconInsets: BOTTOM_TAB_ICON_INSETS,
-                        },
-                      },
-                    },
-                  },
-                ],
-              },
-            },
-            {
-              stack: {
-                children: [
-                  {
-                    component: {
-                      name: ROUTES.MORE,
-                      options: {
-                        topBar: {
-                          noBorder: true,
-                        },
-                        bottomTab: {
-                          icon: require('static/assets/images/menu/more.png'),
-                          selectedIcon: require('static/assets/images/menu/moreActive.png'),
+                          icon: require('src/images/formVid.png'),
+                          selectedIcon: require('src/images/formVid.png'),
                           iconInsets: BOTTOM_TAB_ICON_INSETS,
                         },
                       },
