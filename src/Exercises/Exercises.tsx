@@ -1,5 +1,6 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text, TextInput} from 'react-native';
+import {text} from '../shared/styles';
 
 interface Props {}
 
@@ -10,7 +11,9 @@ const Exercises = ({}: Props) => {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-      }}></View>
+      }}>
+      <Text style={text}>Hello world</Text>
+    </View>
   );
 };
 

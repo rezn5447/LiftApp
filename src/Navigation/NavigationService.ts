@@ -1,4 +1,4 @@
-import { textDark, transparent, white } from '../shared/colors';
+import { maxBlue, textDark, transparent, white } from '../shared/colors';
 import { ROUTES } from '../shared/constants';
 import {
   Navigation,
@@ -30,6 +30,49 @@ class NavigationService {
     });
   };
 
+  public setRootToHome() {
+    Navigation.setDefaultOptions({
+      layout: {
+        componentBackgroundColor: white,
+      },
+      statusBar: {
+        visible: true,
+      },
+      topBar: {
+        visible: true,
+        background: {
+          color: white,
+          translucent: true,
+        },
+        elevation: 0,
+        backButton: {
+          icon: require('images/dumbbell.png'),
+          color: maxBlue,
+        },
+      },
+    });
+
+    Navigation.setRoot({
+      root: {
+        stack: {
+          children: [
+            {
+              component: {
+                name: ROUTES.HOME,
+                options: {
+                  topBar: {
+                    noBorder: true,
+                  },
+                },
+              },
+            },
+          ],
+        },
+      },
+    });
+  }
+
+
   public async setRootToApp(index?: number) {
     Navigation.setDefaultOptions({
       bottomTabs: {
@@ -41,8 +84,11 @@ class NavigationService {
         componentBackgroundColor: white,
       },
       statusBar: {
-        visible: false,
+        visible: true,
       },
+      topBar: {
+        visible: false,
+      }
     });
 
     Navigation.setRoot({
@@ -65,8 +111,8 @@ class NavigationService {
                           rightButtons: [],
                         },
                         bottomTab: {
-                          icon: require('src/images/dumbbell.png'),
-                          selectedIcon: require('src/images/dumbbell.png'),
+                          icon: require('images/dumbbell.png'),
+                          selectedIcon: require('images/dumbbell.png'),
                           iconInsets: BOTTOM_TAB_ICON_INSETS,
                         },
                       },
@@ -86,8 +132,8 @@ class NavigationService {
                           noBorder: true,
                         },
                         bottomTab: {
-                          icon: require('src/images/formVid.png'),
-                          selectedIcon: require('src/images/formVid.png'),
+                          icon: require('images/formVid.png'),
+                          selectedIcon: require('images/formVid.png'),
                           iconInsets: BOTTOM_TAB_ICON_INSETS,
                         },
                       },

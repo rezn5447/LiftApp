@@ -1,5 +1,6 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text, TextInput} from 'react-native';
+import { text } from '../shared/styles';
 
 interface Props {}
 
@@ -11,7 +12,9 @@ const Home = ({}: Props) => {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-
+      <Text style={text}>
+        Hello world
+      </Text>
     </View>
   );
 };
