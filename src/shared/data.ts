@@ -30,7 +30,7 @@ export const LIFTS = {
   DUMBBELL_SUPINATED_CURL: 'DUMBBELL SUPINATED CURL',
 };
 
-const FULL_BODY_DAY1 = [
+export const FULL_BODY_DAY1 = [
   {
     name: 'Day 1',
     exercises: [
@@ -106,7 +106,7 @@ const FULL_BODY_DAY1 = [
   },
 ];
 
-const FULL_BODY_DAY2 = [
+export const FULL_BODY_DAY2 = [
   {
     name: 'Day 2',
     exercises: [
@@ -183,7 +183,7 @@ const FULL_BODY_DAY2 = [
   },
 ];
 
-const FULL_BODY_DAY3 = [
+export const FULL_BODY_DAY3 = [
   {
     name: 'Day 3',
     exercises: [

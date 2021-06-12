@@ -1,9 +1,14 @@
 import React from 'react';
-import {View, Text, TextInput} from 'react-native';
+import styled, {css} from '@emotion/native';
+import {View, Text, TextInput, TouchableOpacity, Linking, ScrollView} from 'react-native';
 import {text} from '../shared/styles';
+import {videos} from '../shared/data';
+import { white } from '../shared/colors';
 
 interface Props {}
 
+// Make record async storage and just make an object 
+// out of the saved sets reps
 const Exercises = ({}: Props) => {
   return (
     <View
@@ -12,9 +17,25 @@ const Exercises = ({}: Props) => {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <Text style={text}>Hello world</Text>
+      <ScrollView>
+        {videos.map(video => (
+          <TouchableOpacity
+            onPress={() => Linking.openURL(video.video)}
+            style={linkStyle}>
+            <Text>{video.name}</Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
     </View>
   );
 };
 
 export default Exercises;
+
+const linkStyle = css([
+  text,
+  {
+    padding: 5,
+    color: white,
+  },
+]);
