@@ -1,26 +1,25 @@
 import React from 'react';
 import {TouchableOpacity, Text, Platform} from 'react-native';
 import {css} from '@emotion/native';
-import {maxBlue, white} from '../shared/colors';
+import {maxBlue} from '../shared/colors';
 import NavigationService from '../Navigation/NavigationService';
-import {ROUTES} from '../shared/constants';
 
 interface Props {
   componentId: string;
-  goToExercises: () => void;
+  goToStats?: () => void;
 }
 
-const ExercisesButton = ({componentId, goToExercises}: Props) => {
+const StatsButton = ({componentId, goToStats}: Props) => {
   return (
-    <TouchableOpacity onPress={goToExercises}>
-      <Text style={exercisesButtonStyle}>Videos</Text>
+    <TouchableOpacity onPress={goToStats}>
+      <Text style={statsButtonStyle}>Stats</Text>
     </TouchableOpacity>
   );
 };
 
-export default ExercisesButton;
+export default StatsButton;
 
-const exercisesButtonStyle = css({
+const statsButtonStyle = css({
   color: maxBlue,
   fontSize: 18,
   lineHeight: 24,

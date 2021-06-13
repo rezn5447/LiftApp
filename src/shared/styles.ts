@@ -7,6 +7,14 @@ const Bold = 'Roboto-Bold';
 const SemiBold = 'Roboto-Medium';
 const Regular = 'Roboto-Regular';
 const Italic = 'Roboto-Italic';
+const P2PRegular = 'PressStart2P';
+
+export const headerText = css({
+  fontSize: 24,
+  color: textDark,
+  fontFamily: 'Roboto-Italic',
+  // fontWeight: '400',
+});
 
 export const text = css({
   fontSize: 14,
