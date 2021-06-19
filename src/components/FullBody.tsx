@@ -1,7 +1,14 @@
 import React from 'react';
 import styled, {css} from '@emotion/native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import {View, Text, SectionList,SafeAreaView , TextInput, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  SectionList,
+  SafeAreaView,
+  TextInput,
+  ScrollView,
+} from 'react-native';
 import {text, subHeader, boldText, header} from '../shared/styles';
 import {indigo, maxBlue, white} from '../shared/colors';
 
@@ -12,39 +19,35 @@ interface Exercise {
   item: any;
 }
 
-
-
 const headers = ['Name', 'Reps', 'RPE', '1', '2', '3', 'Notes'];
 
 const Item = ({item}: Exercise) => (
- <LiftRow>
-  <BouncyCheckbox onPress={() => {}} />
-  <Text style={text}>{item.name}</Text>
-   </LiftRow>
+  <LiftRow>
+    <BouncyCheckbox onPress={() => {}} />
+    <Text style={text}>{item.name}</Text>
+  </LiftRow>
+);
+
+const ExerciseList = ({workout}: Props) => {
+  return (
+    <View>
+      <SectionList
+        sections={workout.DATA}
+        keyExtractor={(item, index) => item + index}
+        ListHeaderComponent={<Text style={header}>{workout.name}</Text>}
+        renderItem={({item}) => <Item item={item} />}
+        renderSectionHeader={({
+          section: {title},
+        }: {
+          section: {title: string};
+        }) => (
+          <LiftItemRow>
+            <Text style={liftHeaderStyle}>{title}</Text>
+          </LiftItemRow>
+        )}
+      />
+    </View>
   );
-  
-  const ExerciseList = ({workout}: Props) => {
-    
-    return (
-      <View>
-        <SectionList
-          sections={workout.DATA}
-          keyExtractor={(item, index) => item + index}
-          ListHeaderComponent={<Text style={header}>{workout.name}</Text>}
-          renderItem={({item}) => <Item item={item} />}
-          renderSectionHeader={({
-            section: {title},
-          }: {
-            section: {title: string};
-          }) => (
-            <LiftItemRow>
-              
-              <Text style={liftHeaderStyle}>{title}</Text>
-            </LiftItemRow>
-          )}
-        />
-      </View>
-    );
 };
 
 export default ExerciseList;
