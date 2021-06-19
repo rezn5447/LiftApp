@@ -16,26 +16,22 @@ interface Props {}
 
 // Make record async storage and just make an object
 // out of the saved sets reps
+
 const Exercises = ({}: Props) => {
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      <Text style={header}>Video Links</Text>
-      <ScrollView>
-        {videos.map((video, idx) => (
-          <TouchableOpacity
-            key={idx}
-            onPress={() => Linking.openURL(video.video)}
-            style={linkStyle}>
-            <Text>{video.name}</Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-    </View>
+ <>
+  <Text style={header}>Video Links</Text>
+  <ScrollView>
+    {videos.map((video, idx) => (
+      <TouchableOpacity
+        key={idx}
+        onPress={() => Linking.openURL(video.video)}
+        style={linkStyle}>
+        <Text>{video.name}</Text>
+      </TouchableOpacity>
+    ))}
+  </ScrollView>
+</>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, ScrollView, TextInput} from 'react-native';
 import {text, boldText, header} from '../shared/styles';
 import {FULL_BODY_DAY1, FULL_BODY_DAY2, FULL_BODY_DAY3} from '../shared/data';
 import FullBody from '../components/FullBody';
@@ -10,6 +10,8 @@ import {Navigation} from 'react-native-navigation';
 interface Props {
   componentId: string;
 }
+
+const DATA = [FULL_BODY_DAY1, FULL_BODY_DAY2, FULL_BODY_DAY3];
 
 const Home = ({componentId}: Props) => {
   Navigation.mergeOptions(componentId, {
@@ -35,16 +37,7 @@ const Home = ({componentId}: Props) => {
   });
 
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        // justifyContent: 'center',
-        width: '100%',
-      }}>
-      <Text style={header}>Full Body</Text>
-      <FullBody workout={FULL_BODY_DAY1} />
-    </View>
+    <FullBody workout={{name: 'Full Body', DATA: DATA}} />
   );
 };
 

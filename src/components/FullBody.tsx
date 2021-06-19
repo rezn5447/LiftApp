@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, {css} from '@emotion/native';
-import {View, Text, SectionList, TextInput} from 'react-native';
-import {text, subHeader, boldText} from '../shared/styles';
-import {FULL_BODY_DAY1, FULL_BODY_DAY2, FULL_BODY_DAY3} from '../shared/data';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import {View, Text, SectionList,SafeAreaView , TextInput, ScrollView} from 'react-native';
+import {text, subHeader, boldText, header} from '../shared/styles';
 import {indigo, maxBlue, white} from '../shared/colors';
 
 interface Props {
@@ -12,38 +12,46 @@ interface Exercise {
   item: any;
 }
 
-const DATA = [FULL_BODY_DAY1, FULL_BODY_DAY2, FULL_BODY_DAY3];
+
 
 const headers = ['Name', 'Reps', 'RPE', '1', '2', '3', 'Notes'];
 
-console.log({DATA});
 const Item = ({item}: Exercise) => (
-  <Text style={subHeaderStyle}>{item.name}</Text>
-);
-
-const FullBody = ({workout}: Props) => {
-  return (
-    <SectionList
-      sections={DATA}
-      keyExtractor={(item, index) => item + index}
-      renderItem={({item}) => <Item item={item} />}
-      renderSectionHeader={({section: {title}}: {section: {title: string}}) => (
-        <>
-          <Text style={liftHeaderStyle}>{title}</Text>
-          <ViewRow>
-            {headers.map((header, idx) => (
-              <Text key={idx} style={subHeaderStyle}>
-                {header}
-              </Text>
-            ))}
-          </ViewRow>
-        </>
-      )}
-    />
+ <LiftRow>
+  <BouncyCheckbox onPress={() => {}} />
+  <Text style={text}>{item.name}</Text>
+   </LiftRow>
   );
+  
+  const ExerciseList = ({workout}: Props) => {
+    
+    return (
+      <View>
+        <SectionList
+          sections={workout.DATA}
+          keyExtractor={(item, index) => item + index}
+          ListHeaderComponent={<Text style={header}>{workout.name}</Text>}
+          renderItem={({item}) => <Item item={item} />}
+          renderSectionHeader={({
+            section: {title},
+          }: {
+            section: {title: string};
+          }) => (
+            <LiftItemRow>
+              
+              <Text style={liftHeaderStyle}>{title}</Text>
+            </LiftItemRow>
+          )}
+        />
+      </View>
+    );
 };
 
-export default FullBody;
+export default ExerciseList;
+
+const LiftItemRow = styled.View({
+  padding: 5,
+});
 
 const ViewRow = styled.View({
   flexDirection: 'row',
@@ -67,4 +75,8 @@ const subHeaderStyle = css([
   },
 ]);
 
-const LiftRow = styled.View({});
+const LiftRow = styled.View({
+  flexDirection: 'row',
+  margin: 10,
+  marginLeft: 20,
+});

@@ -13,6 +13,7 @@ export const header = css({
   fontSize: 24,
   color: textDark,
   fontFamily: P2PRegular,
+  textAlign: 'center',
   fontWeight: '400',
 });
 
