@@ -1,12 +1,12 @@
-import { textDark, transparent, white } from '../shared/colors';
-import { ROUTES } from '../shared/constants';
+import {maxBlue, textDark, transparent, white} from '../shared/colors';
+import {ROUTES} from '../shared/constants';
 import {
   Navigation,
   Options,
   OptionsModalPresentationStyle,
 } from 'react-native-navigation';
 
-const BOTTOM_TAB_ICON_INSETS = { top: 0 };
+const BOTTOM_TAB_ICON_INSETS = {top: 0};
 
 class NavigationService {
   public pop = (componentId: string) => {
@@ -30,71 +30,35 @@ class NavigationService {
     });
   };
 
-  public async setRootToApp(index?: number) {
+  public setRootToHome() {
     Navigation.setDefaultOptions({
-      bottomTabs: {
-        backgroundColor: white,
-        currentTabIndex: index ?? 0,
-        borderColor: transparent,
-      },
       layout: {
         componentBackgroundColor: white,
       },
       statusBar: {
-        visible: false,
+        visible: true,
+      },
+      topBar: {
+        visible: true,
+        background: {
+          color: white,
+          translucent: true,
+        },
+        elevation: 0,
+        backButton: {
+          color: maxBlue,
+        },
       },
     });
 
     Navigation.setRoot({
       root: {
-        bottomTabs: {
+        stack: {
           children: [
             {
-              stack: {
-                children: [
-                  {
-                    component: {
-                      name: ROUTES.HOME,
-                      options: {
-                        topBar: {
-                          noBorder: true,
-                          drawBehind: true,
-                          background: {
-                            color: 'transparent',
-                          },
-                          rightButtons: [],
-                        },
-                        bottomTab: {
-                          icon: require('src/images/dumbbell.png'),
-                          selectedIcon: require('src/images/dumbbell.png'),
-                          iconInsets: BOTTOM_TAB_ICON_INSETS,
-                        },
-                      },
-                    },
-                  },
-                ],
-              },
-            },
-            {
-              stack: {
-                children: [
-                  {
-                    component: {
-                      name: ROUTES.VIDEOS,
-                      options: {
-                        topBar: {
-                          noBorder: true,
-                        },
-                        bottomTab: {
-                          icon: require('src/images/formVid.png'),
-                          selectedIcon: require('src/images/formVid.png'),
-                          iconInsets: BOTTOM_TAB_ICON_INSETS,
-                        },
-                      },
-                    },
-                  },
-                ],
-              },
+              component: {
+                name: ROUTES.HOME,
+              }
             },
           ],
         },

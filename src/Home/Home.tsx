@@ -1,18 +1,43 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text, ScrollView, TextInput} from 'react-native';
+import {text, boldText, header} from '../shared/styles';
+import {FULL_BODY_DAY1, FULL_BODY_DAY2, FULL_BODY_DAY3} from '../shared/data';
+import FullBody from '../components/FullBody';
+import {ROUTES} from '../shared/constants';
+import NavigationService from '../Navigation/NavigationService';
+import {Navigation} from 'react-native-navigation';
 
-interface Props {}
+interface Props {
+  componentId: string;
+}
 
-const Home = ({}: Props) => {
+const DATA = [FULL_BODY_DAY1, FULL_BODY_DAY2, FULL_BODY_DAY3];
+
+const Home = ({componentId}: Props) => {
+  Navigation.mergeOptions(componentId, {
+    topBar: {
+      noBorder: true,
+      rightButtons: [
+        {
+          id: 'exercises_button',
+          component: {
+            name: ROUTES.EXCERCISE_BUTTON,
+            passProps: {
+              goToExercises: () => {
+                NavigationService.pushToScreen({
+                  componentId,
+                  screen: ROUTES.VIDEOS,
+                });
+              },
+            },
+          },
+        },
+      ],
+    },
+  });
+
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-
-    </View>
+    <FullBody workout={{name: 'Full Body', DATA: DATA}} />
   );
 };
 

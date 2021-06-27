@@ -8,6 +8,6 @@ LogBox.ignoreAllLogs();
 export default async function startApp() {
   registerScreens();
   Navigation.events().registerAppLaunchedListener(() => {
-    NavigationService.setRootToApp();
+    NavigationService.setRootToHome();
   });
 }
