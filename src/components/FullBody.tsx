@@ -19,12 +19,23 @@ interface Exercise {
   item: any;
 }
 
-const headers = ['Name', 'Reps', 'RPE', '1', '2', '3', 'Notes'];
-
 const Item = ({item}: Exercise) => (
   <LiftRow>
-    <BouncyCheckbox onPress={() => {}} />
-    <Text style={text}>{item.name}</Text>
+    <BouncyCheckbox
+      fillColor={maxBlue}
+      iconStyle={{border: `1px solid ${maxBlue}`}}
+      onPress={() => {}}
+    />
+    <Text style={exerciseText}>{item.name}</Text>
+    <View
+      style={{
+        flexDirection: 'row',
+        width: 50,
+        justifyContent: 'space-between',
+      }}>
+      <Text style={text}>{item.reps}</Text>
+      <Text style={text}>{item.rest}</Text>
+    </View>
   </LiftRow>
 );
 
@@ -70,16 +81,16 @@ const liftHeaderStyle = css([
   },
 ]);
 
-const subHeaderStyle = css([
-  subHeader,
+const exerciseText = css([
+  text,
   {
-    padding: 8,
-    color: white,
+    marginRight: 16,
   },
 ]);
 
 const LiftRow = styled.View({
   flexDirection: 'row',
+  // justifyContent: 'space-between',
   margin: 10,
   marginLeft: 20,
 });
